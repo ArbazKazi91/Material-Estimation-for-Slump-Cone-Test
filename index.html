@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,12 +6,9 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>
-Slump Cone Test Material Estimator
-</title>
+<title>Slump Cone Test Material Estimator</title>
 
 <style>
 
@@ -19,395 +17,297 @@ Slump Cone Test Material Estimator
 }
 
 body{
-
     margin:0;
-
     font-family:"Times New Roman",serif;
-
     background:#eef6fb;
-
     color:#1d2935;
 }
-
 
 /* HEADER */
 
 header{
-
     background:#003366;
-
     color:white;
-
     text-align:center;
-
     padding:30px 15px;
 }
 
 header h1{
-
     margin:0 0 8px;
-
     font-size:32px;
 }
 
 header p{
-
     margin:0;
-
     font-size:17px;
 }
 
-
-/* MAIN */
+/* MAIN CONTAINER */
 
 .container{
-
     max-width:1050px;
-
     margin:30px auto;
-
     padding:0 18px;
 }
-
 
 /* CARD */
 
 .card{
-
     background:white;
-
     border-radius:14px;
-
     padding:25px;
-
     margin-bottom:22px;
-
-    box-shadow:
-    0 5px 20px rgba(0,0,0,0.09);
+    box-shadow:0 5px 20px rgba(0,0,0,0.09);
 }
 
 h2{
-
     color:#003366;
-
     margin-top:0;
-
     border-bottom:2px solid #003366;
-
     padding-bottom:8px;
 }
-
 
 /* INPUT GRID */
 
 .grid{
-
     display:grid;
-
-    grid-template-columns:
-    repeat(2,1fr);
-
+    grid-template-columns:repeat(2,1fr);
     gap:18px;
 }
 
-
 .field label{
-
     display:block;
-
     font-weight:bold;
-
     margin-bottom:7px;
 }
 
-
 .field input{
-
     width:100%;
-
     padding:11px;
-
     border:1px solid #b9c8d4;
-
     border-radius:7px;
-
     font-size:16px;
-
-    font-family:
-    "Times New Roman",serif;
+    font-family:"Times New Roman",serif;
 }
-
 
 .field input:focus{
-
     outline:none;
-
     border-color:#003366;
-
-    box-shadow:
-    0 0 4px rgba(0,51,102,0.25);
+    box-shadow:0 0 4px rgba(0,51,102,0.25);
 }
 
-
-/* PROPORTION SECTION */
+/* PROPORTION BOX */
 
 .proportion-box{
-
     margin-top:22px;
-
     padding:18px;
-
     background:#f4f8fb;
-
     border-radius:10px;
-
     border-left:4px solid #003366;
 }
 
 .proportion-box h3{
-
     margin-top:0;
-
     color:#003366;
 }
 
 .proportion-grid{
-
     display:grid;
-
-    grid-template-columns:
-    repeat(3,1fr);
-
+    grid-template-columns:repeat(3,1fr);
     gap:15px;
 }
-
 
 /* BUTTONS */
 
 .buttons{
-
     display:flex;
-
     gap:12px;
-
     margin-top:22px;
-
     flex-wrap:wrap;
 }
 
-
 button{
-
     border:none;
-
     border-radius:7px;
-
     padding:12px 24px;
-
     font-size:16px;
-
     cursor:pointer;
-
-    font-family:
-    "Times New Roman",serif;
+    font-family:"Times New Roman",serif;
 }
 
-
 .calculate{
-
     background:#003366;
-
     color:white;
 }
 
-
 .calculate:hover{
-
     background:#00509e;
 }
 
-
 .reset{
-
     background:#dfe8ee;
-
     color:#17212b;
 }
 
-
 .reset:hover{
-
     background:#c8d4db;
 }
-
 
 /* RESULTS */
 
 .results{
-
     display:none;
 }
 
-
 .result-grid{
-
     display:grid;
-
-    grid-template-columns:
-    repeat(4,1fr);
-
+    grid-template-columns:repeat(4,1fr);
     gap:12px;
 }
 
-
 .result{
-
     background:#f1f7fb;
-
     border-left:4px solid #003366;
-
     padding:15px;
-
     border-radius:8px;
 }
 
-
 .result span{
-
     display:block;
-
     color:#647483;
-
     font-size:14px;
 }
 
-
 .result strong{
-
     display:block;
-
-    font-size:21px;
-
+    font-size:20px;
     color:#003366;
-
     margin-top:5px;
 }
 
+/* CALCULATION FLOW */
+
+.calculation-flow{
+    margin-top:22px;
+    padding:18px;
+    background:#f8fafc;
+    border:1px solid #d8e2e9;
+    border-radius:10px;
+}
+
+.calculation-flow h3{
+    color:#003366;
+    margin-top:0;
+}
+
+.flow-row{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+}
+
+.flow-box{
+    background:white;
+    border:1px solid #ccd7df;
+    border-radius:8px;
+    padding:15px;
+    text-align:center;
+}
+
+.flow-box strong{
+    display:block;
+    color:#003366;
+    font-size:20px;
+    margin-bottom:6px;
+}
+
+.flow-box span{
+    color:#667785;
+    font-size:14px;
+}
 
 /* TABLE */
 
 table{
-
     width:100%;
-
     border-collapse:collapse;
-
     margin-top:22px;
 }
 
-
 th,
 td{
-
     border:1px solid #ccd7df;
-
     padding:11px;
-
     text-align:center;
 }
 
-
 th{
-
     background:#003366;
-
     color:white;
 }
 
-
 tr:nth-child(even){
-
     background:#f7fafc;
 }
-
 
 /* NOTE */
 
 .note{
-
     background:#fff8df;
-
     border-left:4px solid #e0a800;
-
     padding:15px;
-
     margin-top:20px;
-
     line-height:1.5;
 }
-
 
 /* FOOTER */
 
 footer{
-
     background:#003366;
-
     color:white;
-
     text-align:center;
-
     padding:18px;
-
     margin-top:35px;
-
     font-size:16px;
 }
-
 
 /* MOBILE */
 
 @media(max-width:750px){
 
     .grid{
-
         grid-template-columns:1fr;
     }
 
     .result-grid{
-
-        grid-template-columns:
-        1fr 1fr;
+        grid-template-columns:1fr 1fr;
     }
 
     .proportion-grid{
-
         grid-template-columns:1fr;
     }
 
+    .flow-row{
+        grid-template-columns:1fr;
+    }
 }
-
 
 @media(max-width:500px){
 
     .result-grid{
-
         grid-template-columns:1fr;
     }
 
     header h1{
-
         font-size:25px;
     }
 
     table{
-
         font-size:13px;
     }
 
     th,
     td{
-
         padding:7px;
     }
 
@@ -440,7 +340,7 @@ Concrete Material Estimation Based on Slump Cone Volume
 <main class="container">
 
 
-<!-- INPUT CARD -->
+<!-- INPUT SECTION -->
 
 <section class="card">
 
@@ -594,7 +494,7 @@ min="0"
 
 
 
-<!-- PROPORTION -->
+<!-- MIX PROPORTION -->
 
 <div class="proportion-box">
 
@@ -698,7 +598,7 @@ Reset
 
 
 
-<!-- RESULTS -->
+<!-- RESULTS SECTION -->
 
 <section
 class="card results"
@@ -719,10 +619,10 @@ Estimated Materials
 <div class="result">
 
 <span>
-Slump Cone Volume
+Dry Volume
 </span>
 
-<strong id="coneVolume">
+<strong id="dryVolume">
 —
 </strong>
 
@@ -732,10 +632,10 @@ Slump Cone Volume
 <div class="result">
 
 <span>
-Volume with Wastage
+Revised Volume (+54%)
 </span>
 
-<strong id="volumeWaste">
+<strong id="revisedVolume">
 —
 </strong>
 
@@ -745,10 +645,10 @@ Volume with Wastage
 <div class="result">
 
 <span>
-Mix Proportion
+Volume After Wastage
 </span>
 
-<strong id="mixProportion">
+<strong id="wasteVolume">
 —
 </strong>
 
@@ -767,6 +667,65 @@ Total Material Mass
 
 </div>
 
+
+</div>
+
+
+
+<!-- CALCULATION FLOW -->
+
+<div class="calculation-flow">
+
+<h3>
+Volume Calculation
+</h3>
+
+
+<div class="flow-row">
+
+
+<div class="flow-box">
+
+<strong id="flowDry">
+—
+</strong>
+
+<span>
+Dry Volume
+</span>
+
+</div>
+
+
+
+<div class="flow-box">
+
+<strong id="flowRevised">
+—
+</strong>
+
+<span>
+Dry Volume × 1.54
+</span>
+
+</div>
+
+
+
+<div class="flow-box">
+
+<strong id="flowFinal">
+—
+</strong>
+
+<span>
+Revised Volume + Wastage
+</span>
+
+</div>
+
+
+</div>
 
 </div>
 
@@ -891,17 +850,21 @@ Coarse Aggregate
 
 
 
-<!-- FORMULA -->
+<!-- CALCULATION NOTE -->
 
 <div class="note">
 
 <strong>
-Calculation Method:
+Calculation Method
 </strong>
 
 <br><br>
 
-Slump cone volume is calculated using:
+<strong>Step 1 – Dry Volume:</strong>
+
+<br>
+
+The volume of the slump cone is calculated as:
 
 <br><br>
 
@@ -911,43 +874,43 @@ V = πh/12 × (D₁² + D₁D₂ + D₂²)
 
 <br><br>
 
-Where:
-
-<br>
-
-D₁ = Top diameter
-
-<br>
-
-D₂ = Bottom diameter
-
-<br>
-
-h = Height
-
-<br><br>
-
-Volume after wastage:
+<strong>Step 2 – Increase Dry Volume by 54%:</strong>
 
 <br>
 
 <strong>
-V<sub>w</sub> = V × (1 + W/100)
+Revised Volume = Dry Volume × 1.54
 </strong>
 
 <br><br>
 
-The final volume is divided according to the
-entered concrete mix proportion.
-
-<br><br>
-
-Material quantity:
+<strong>Step 3 – Apply Wastage:</strong>
 
 <br>
 
 <strong>
-Mass = Volume × Density
+Estimation Volume =
+Revised Volume × (1 + Wastage/100)
+</strong>
+
+<br><br>
+
+<strong>Step 4 – Material Volume:</strong>
+
+<br>
+
+The estimation volume is divided according to the
+entered cement : fine aggregate : coarse aggregate
+proportion.
+
+<br><br>
+
+<strong>Step 5 – Material Quantity:</strong>
+
+<br>
+
+<strong>
+Material Quantity = Material Volume × Material Density
 </strong>
 
 </div>
@@ -966,24 +929,33 @@ About the Calculator
 
 <p>
 
-This calculator estimates the quantity of
-cement, fine aggregate and coarse aggregate
-required for a slump cone test based on the
-geometrical volume of the slump cone.
+This calculator estimates the quantity of cement,
+fine aggregate and coarse aggregate required for
+a slump cone test.
 
 </p>
 
 <p>
 
-The calculator uses the user-defined material
-densities and concrete mix proportions.
+The slump cone geometrical volume is initially
+considered as the <strong>dry volume</strong>.
+The dry volume is then increased by
+<strong>54%</strong> to obtain the revised volume.
+
+</p>
+
+<p>
+
+The specified wastage percentage is subsequently
+applied to the revised volume, and the resulting
+volume is used for material estimation.
 
 </p>
 
 <p>
 
 <strong>
-Example Mix:
+Example Mix Proportion:
 </strong>
 
 1 : 2 : 4
@@ -1011,7 +983,7 @@ Developed by Mr. Arbaz Kazi
 <script>
 
 
-/* GET VALUE */
+/* GET NUMERIC VALUE */
 
 function getValue(id){
 
@@ -1023,15 +995,17 @@ function getValue(id){
     return Number.isFinite(value)
         ? value
         : 0;
+
 }
 
 
 
-/* FORMAT */
+/* FORMAT NUMBER */
 
 function formatNumber(value){
 
     return value.toFixed(4);
+
 }
 
 
@@ -1041,7 +1015,7 @@ function formatNumber(value){
 function calculate(){
 
 
-    /* INPUTS */
+    /* INPUT VALUES */
 
     const D1 =
         getValue("topDiameter");
@@ -1065,6 +1039,8 @@ function calculate(){
         getValue("coarseDensity");
 
 
+    /* MIX PROPORTIONS */
+
     const cementProp =
         getValue("cementProp");
 
@@ -1076,7 +1052,7 @@ function calculate(){
 
 
 
-    /* VALIDATION */
+    /* VALIDATE DIMENSIONS */
 
     if(
         D1 <= 0 ||
@@ -1093,6 +1069,9 @@ function calculate(){
     }
 
 
+
+    /* VALIDATE DENSITIES */
+
     if(
         cementDensity <= 0 ||
         fineDensity <= 0 ||
@@ -1108,6 +1087,9 @@ function calculate(){
     }
 
 
+
+    /* VALIDATE PROPORTIONS */
+
     if(
         cementProp <= 0 ||
         fineProp <= 0 ||
@@ -1115,7 +1097,7 @@ function calculate(){
     ){
 
         alert(
-            "Please enter valid mix proportions."
+            "Please enter valid material proportions."
         );
 
         return;
@@ -1124,7 +1106,7 @@ function calculate(){
 
 
 
-    /* TOTAL PROPORTION */
+    /* TOTAL MIX PROPORTION */
 
     const totalProp =
         cementProp +
@@ -1133,9 +1115,12 @@ function calculate(){
 
 
 
-    /* SLUMP CONE VOLUME */
+    /* =====================================
+       STEP 1
+       DRY SLUMP CONE VOLUME
+       ===================================== */
 
-    const coneVolume =
+    const dryVolume =
         (
             Math.PI *
             h *
@@ -1148,10 +1133,23 @@ function calculate(){
 
 
 
-    /* WASTAGE */
+    /* =====================================
+       STEP 2
+       INCREASE DRY VOLUME BY 54%
+       ===================================== */
 
-    const volumeWithWastage =
-        coneVolume *
+    const revisedVolume =
+        dryVolume * 1.54;
+
+
+
+    /* =====================================
+       STEP 3
+       APPLY WASTAGE
+       ===================================== */
+
+    const estimationVolume =
+        revisedVolume *
         (
             1 +
             wastage / 100
@@ -1159,28 +1157,34 @@ function calculate(){
 
 
 
-    /* MATERIAL VOLUMES */
+    /* =====================================
+       STEP 4
+       MATERIAL VOLUMES
+       ===================================== */
 
     const cementVolume =
-        volumeWithWastage *
+        estimationVolume *
         cementProp /
         totalProp;
 
 
     const fineVolume =
-        volumeWithWastage *
+        estimationVolume *
         fineProp /
         totalProp;
 
 
     const coarseVolume =
-        volumeWithWastage *
+        estimationVolume *
         coarseProp /
         totalProp;
 
 
 
-    /* MATERIAL MASSES */
+    /* =====================================
+       STEP 5
+       MATERIAL MASS
+       ===================================== */
 
     const cementQuantity =
         cementVolume *
@@ -1198,7 +1202,9 @@ function calculate(){
 
 
 
-    /* TOTAL MASS */
+    /* =====================================
+       TOTAL MASS
+       ===================================== */
 
     const totalMass =
         cementQuantity +
@@ -1207,31 +1213,29 @@ function calculate(){
 
 
 
-    /* DISPLAY SUMMARY */
-
+    /* =====================================
+       DISPLAY SUMMARY
+       ===================================== */
 
     document.getElementById(
-        "coneVolume"
+        "dryVolume"
     ).textContent =
-        formatNumber(coneVolume)
+        formatNumber(dryVolume)
         + " m³";
 
 
     document.getElementById(
-        "volumeWaste"
+        "revisedVolume"
     ).textContent =
-        formatNumber(volumeWithWastage)
+        formatNumber(revisedVolume)
         + " m³";
 
 
     document.getElementById(
-        "mixProportion"
+        "wasteVolume"
     ).textContent =
-        cementProp +
-        " : " +
-        fineProp +
-        " : " +
-        coarseProp;
+        formatNumber(estimationVolume)
+        + " m³";
 
 
     document.getElementById(
@@ -1242,7 +1246,35 @@ function calculate(){
 
 
 
-    /* CEMENT */
+    /* =====================================
+       CALCULATION FLOW
+       ===================================== */
+
+    document.getElementById(
+        "flowDry"
+    ).textContent =
+        formatNumber(dryVolume)
+        + " m³";
+
+
+    document.getElementById(
+        "flowRevised"
+    ).textContent =
+        formatNumber(revisedVolume)
+        + " m³";
+
+
+    document.getElementById(
+        "flowFinal"
+    ).textContent =
+        formatNumber(estimationVolume)
+        + " m³";
+
+
+
+    /* =====================================
+       CEMENT
+       ===================================== */
 
     document.getElementById(
         "cementPropResult"
@@ -1269,7 +1301,9 @@ function calculate(){
 
 
 
-    /* FINE AGGREGATE */
+    /* =====================================
+       FINE AGGREGATE
+       ===================================== */
 
     document.getElementById(
         "finePropResult"
@@ -1296,7 +1330,9 @@ function calculate(){
 
 
 
-    /* COARSE AGGREGATE */
+    /* =====================================
+       COARSE AGGREGATE
+       ===================================== */
 
     document.getElementById(
         "coarsePropResult"
@@ -1341,7 +1377,9 @@ function calculate(){
 
 
 
-/* RESET */
+/* =====================================
+   RESET
+   ===================================== */
 
 function resetForm(){
 
@@ -1425,3 +1463,4 @@ calculate();
 </body>
 
 </html>
+```
