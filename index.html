@@ -1,1 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Slump Cone Test Material Estimator</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:"Times New Roman",serif;
+    background:#eef6fb;
+    color:#1d2935;
+}
+
+/* HEADER */
+
+header{
+    background:#003366;
+    color:white;
+    text-align:center;
+    padding:28px 15px;
+}
+
+header h1{
+    margin:0 0 8px;
+    font-size:32px;
+}
+
+header p{
+    margin:0;
+    font-size:17px;
+}
+
+/* MAIN CONTAINER */
+
+.container{
+    max-width:1050px;
+    margin:30px auto;
+    padding:0 18px;
+}
+
+/* CARDS */
+
+.card{
+    background:white;
+    border-radius:14px;
+    padding:25px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.09);
+    margin-bottom:22px;
+}
+
+h2{
+    color:#003366;
+    margin-top:0;
+    border-bottom:2px solid #003366;
+    padding-bottom:8px;
+}
+
+/* INPUT GRID */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
+
+.field label{
+    display:block;
+    font-weight:bold;
+    margin-bottom:7px;
+}
+
+.field input{
+    width:100%;
+    padding:11px;
+    border:1px solid #b9c8d4;
+    border-radius:7px;
+    font-size:16px;
+    font-family:"Times New Roman",serif;
+}
+
+.field input:focus{
+    outline:none;
+    border-color:#003366;
+    box-shadow:0 0 4px rgba(0,51,102,0.25);
+}
+
+.field small{
+    display:block;
+    color:#667785;
+    margin-top:4px;
+}
+
+/* BUTTONS */
+
+.buttons{
+    display:flex;
+    gap:12px;
+    margin-top:20px;
+    flex-wrap:wrap;
+}
+
+button{
+    border:0;
+    border-radius:7px;
+    padding:12px 22px;
+    font-size:16px;
+    cursor:pointer;
+    font-family:"Times New Roman",serif;
+}
+
+.calculate{
+    background:#003366;
+    color:white;
+}
+
+.calculate:hover{
+    background:#00509e;
+}
+
+.reset{
+    background:#dfe8ee;
+    color:#17212b;
+}
+
+.reset:hover{
+    background:#c9d5dc;
+}
+
+/* RESULTS */
+
+.results{
+    display:none;
+}
+
+.result-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+}
+
+.result{
+    background:#f1f7fb;
+    border-left:4px solid #003366;
+    padding:15px;
+    border-radius:8px;
+}
+
+.result span{
+    display:block;
+    color:#647483;
+    font-size:14px;
+}
+
+.result strong{
+    display:block;
+    font-size:22px;
+    color:#003366;
+    margin-top:5px;
+}
+
+/* TABLE */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+th,
+td{
+    border:1px solid #ccd7df;
+    padding:11px;
+    text-align:center;
+}
+
+th{
+    background:#003366;
+    color:white;
+}
+
+tr:nth-child(even){
+    background:#f7fafc;
+}
+
+/* NOTE */
+
+.note{
+    background:#fff8df;
+    border-left:4px solid #e0a800;
+    padding:13px;
+    margin-top:18px;
+    line-height:1.5;
+}
+
+/* FOOTER */
+
+footer{
+    background:#003366;
+    color:white;
+    text-align:center;
+    padding:18px;
+    margin-top:35px;
+    font-size:16px;
+}
+
+/* MOBILE */
+
+@media(max-width:750px){
+
+    .grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .result-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+
+@media(max-width:500px){
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .result-grid{
+        grid-template-columns:1fr;
+    }
+
+    header h1{
+        font-size:25px;
+    }
+
+    table{
+        font-size:13px;
+    }
+
+    th,
+    td{
+        padding:7px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+    <h1>Slump Cone Test Material Estimator</h1>
+
+    <p>
+        Estimate Concrete Materials Required for Slump Cone Testing
+    </p>
+
+</header>
+
+
+<!-- MAIN CONTENT -->
+
+<main class="container">
+
+
+<!-- INPUT SECTION -->
+
+<section class="card">
+
+    <h2>Input Parameters</h2>
+
+    <div class="grid">
+
+        <div class="field">
+
+            <label for="tests">
+                Number of Slump Tests
+            </label>
+
+            <input
+                id="tests"
+                type="number"
+                min="1"
+                step="1"
+                value="3"
+            >
+
+        </div>
+
+
+        <div class="field">
+
+            <label for="waste">
+                Wastage (%)
+            </label>
+
+            <input
+                id="waste"
+                type="number"
+                min="0"
+                step="0.1"
+                value="10"
+            >
+
+        </div>
+
+
+        <div class="field">
+
+            <label for="cement">
+                Cement Content (kg/m³)
+            </label>
+
+            <input
+                id="cement"
+                type="number"
+                min="0"
+                step="0.1"
+                value="350"
+            >
+
+        </div>
+
+
+        <div class="field">
+
+            <label for="water">
+                Water Content (kg/m³)
+            </label>
+
+            <input
+                id="water"
+                type="number"
+                min="0"
+                step="0.1"
+                value="175"
+            >
+
+        </div>
+
+
+        <div class="field">
+
+            <label for="fine">
+                Fine Aggregate (kg/m³)
+            </label>
+
+            <input
+                id="fine"
+                type="number"
+                min="0"
+                step="0.1"
+                value="700"
+            >
+
+        </div>
+
+
+        <div class="field">
+
+            <label for="coarse">
+                Coarse Aggregate (kg/m³)
+            </label>
+
+            <input
+                id="coarse"
+                type="number"
+                min="0"
+                step="0.1"
+                value="1100"
+            >
+
+        </div>
+
+
+        <div class="field">
+
+            <label for="coneTop">
+                Slump Cone Top Diameter (mm)
+            </label>
+
+            <input
+                id="coneTop"
+                type="number"
+                min="1"
+                step="1"
+                value="100"
+            >
+
+        </div>
+
+
+        <div class="field">
+
+            <label for="coneBottom">
+                Slump Cone Bottom Diameter (mm)
+            </label>
+
+            <input
+                id="coneBottom"
+                type="number"
+                min="1"
+                step="1"
+                value="200"
+            >
+
+        </div>
+
+
+        <div class="field">
+
+            <label for="coneHeight">
+                Slump Cone Height (mm)
+            </label>
+
+            <input
+                id="coneHeight"
+                type="number"
+                min="1"
+                step="1"
+                value="300"
+            >
+
+        </div>
+
+    </div>
+
+
+    <div class="buttons">
+
+        <button
+            class="calculate"
+            onclick="calculate()"
+        >
+            Calculate Estimate
+        </button>
+
+
+        <button
+            class="reset"
+            onclick="resetForm()"
+        >
+            Reset
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- RESULTS SECTION -->
+
+<section class="card results" id="results">
+
+    <h2>Estimated Materials</h2>
+
+
+    <div class="result-grid">
+
+
+        <div class="result">
+
+            <span>
+                Concrete / Test
+            </span>
+
+            <strong id="perTest">
+                —
+            </strong>
+
+        </div>
+
+
+        <div class="result">
+
+            <span>
+                Total Concrete
+            </span>
+
+            <strong id="totalConcrete">
+                —
+            </strong>
+
+        </div>
+
+
+        <div class="result">
+
+            <span>
+                Total with Wastage
+            </span>
+
+            <strong id="wasteConcrete">
+                —
+            </strong>
+
+        </div>
+
+
+        <div class="result">
+
+            <span>
+                Cone Volume
+            </span>
+
+            <strong id="coneVolume">
+                —
+            </strong>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- MATERIAL TABLE -->
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>
+                    Material
+                </th>
+
+                <th>
+                    Quantity / Test
+                </th>
+
+                <th>
+                    Total Quantity
+                </th>
+
+                <th>
+                    Total + Wastage
+                </th>
+
+            </tr>
+
+        </thead>
+
+
+        <tbody>
+
+            <tr>
+
+                <td>
+                    Cement
+                </td>
+
+                <td id="cementTest">
+                    —
+                </td>
+
+                <td id="cementTotal">
+                    —
+                </td>
+
+                <td id="cementWaste">
+                    —
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    Water
+                </td>
+
+                <td id="waterTest">
+                    —
+                </td>
+
+                <td id="waterTotal">
+                    —
+                </td>
+
+                <td id="waterWaste">
+                    —
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    Fine Aggregate
+                </td>
+
+                <td id="fineTest">
+                    —
+                </td>
+
+                <td id="fineTotal">
+                    —
+                </td>
+
+                <td id="fineWaste">
+                    —
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    Coarse Aggregate
+                </td>
+
+                <td id="coarseTest">
+                    —
+                </td>
+
+                <td id="coarseTotal">
+                    —
+                </td>
+
+                <td id="coarseWaste">
+                    —
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+
+
+    <!-- CALCULATION NOTE -->
+
+    <div class="note">
+
+        <strong>Calculation Formula:</strong>
+
+        <br><br>
+
+        Slump cone volume is calculated using the frustum equation:
+
+        <br><br>
+
+        <strong>
+            V = πh/12 × (D₁² + D₁D₂ + D₂²)
+        </strong>
+
+        <br><br>
+
+        Where:
+
+        <br>
+
+        D₁ = Top diameter of slump cone
+
+        <br>
+
+        D₂ = Bottom diameter of slump cone
+
+        <br>
+
+        h = Height of slump cone
+
+        <br><br>
+
+        Material quantity:
+
+        <br>
+
+        <strong>
+            Material Required = Material Content × Concrete Volume
+        </strong>
+
+        <br><br>
+
+        Wastage is applied to the final material quantity.
+
+    </div>
+
+</section>
+
+
+
+<!-- ABOUT -->
+
+<section class="card">
+
+    <h2>
+        About the Calculator
+    </h2>
+
+    <p>
+        This Slump Cone Test Material Estimator provides a quick
+        estimation of cement, water, fine aggregate and coarse
+        aggregate required for conducting a specified number of
+        slump cone tests.
+    </p>
+
+    <p>
+        The calculator is intended for laboratory planning,
+        concrete material estimation and educational purposes.
+    </p>
+
+    <p>
+        <strong>
+            Standard Slump Cone Dimensions:
+        </strong>
+    </p>
+
+    <ul>
+
+        <li>
+            Top Diameter = 100 mm
+        </li>
+
+        <li>
+            Bottom Diameter = 200 mm
+        </li>
+
+        <li>
+            Height = 300 mm
+        </li>
+
+    </ul>
+
+</section>
+
+
+</main>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    © 2026 Slump Cone Test Material Estimator -
+    Developed by Mr. Arbaz Kazi
+
+</footer>
+
+
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+
+/* GET NUMERIC VALUE */
+
+function val(id){
+
+    const n =
+        parseFloat(
+            document.getElementById(id).value
+        );
+
+    return Number.isFinite(n) ? n : 0;
+
+}
+
+
+
+/* FORMAT NUMBER */
+
+function fmt(n, unit){
+
+    return n.toFixed(3) + " " + unit;
+
+}
+
+
+
+/* CALCULATE */
+
+function calculate(){
+
+
+    /* INPUT VALUES */
+
+    const tests =
+        val("tests");
+
+    const waste =
+        val("waste") / 100;
+
+    const cement =
+        val("cement");
+
+    const water =
+        val("water");
+
+    const fine =
+        val("fine");
+
+    const coarse =
+        val("coarse");
+
+
+    /* CONE DIMENSIONS IN METRES */
+
+    const d1 =
+        val("coneTop") / 1000;
+
+    const d2 =
+        val("coneBottom") / 1000;
+
+    const h =
+        val("coneHeight") / 1000;
+
+
+
+    /* VALIDATION */
+
+    if(
+        tests <= 0 ||
+        d1 <= 0 ||
+        d2 <= 0 ||
+        h <= 0
+    ){
+
+        alert(
+            "Please enter valid positive values."
+        );
+
+        return;
+
+    }
+
+
+
+    /* SLUMP CONE VOLUME */
+
+    const volume =
+        Math.PI *
+        h / 12 *
+        (
+            d1*d1 +
+            d1*d2 +
+            d2*d2
+        );
+
+
+
+    /* TOTAL CONCRETE */
+
+    const total =
+        volume * tests;
+
+
+
+    /* TOTAL WITH WASTAGE */
+
+    const totalWaste =
+        total * (1 + waste);
+
+
+
+    /* DISPLAY RESULTS */
+
+    document.getElementById(
+        "perTest"
+    ).textContent =
+        fmt(
+            volume * 1000,
+            "L"
+        );
+
+
+    document.getElementById(
+        "totalConcrete"
+    ).textContent =
+        fmt(
+            total,
+            "m³"
+        );
+
+
+    document.getElementById(
+        "wasteConcrete"
+    ).textContent =
+        fmt(
+            totalWaste,
+            "m³"
+        );
+
+
+    document.getElementById(
+        "coneVolume"
+    ).textContent =
+        fmt(
+            volume * 1000,
+            "L"
+        );
+
+
+
+    /* MATERIAL CALCULATIONS */
+
+    setMaterial(
+        "cement",
+        cement,
+        volume,
+        tests,
+        waste,
+        "kg"
+    );
+
+
+    setMaterial(
+        "water",
+        water,
+        volume,
+        tests,
+        waste,
+        "kg"
+    );
+
+
+    setMaterial(
+        "fine",
+        fine,
+        volume,
+        tests,
+        waste,
+        "kg"
+    );
+
+
+    setMaterial(
+        "coarse",
+        coarse,
+        volume,
+        tests,
+        waste,
+        "kg"
+    );
+
+
+
+    /* SHOW RESULTS */
+
+    document.getElementById(
+        "results"
+    ).style.display =
+        "block";
+
+
+    document.getElementById(
+        "results"
+    ).scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+
+
+/* MATERIAL CALCULATION */
+
+function setMaterial(
+    prefix,
+    content,
+    volume,
+    tests,
+    waste,
+    unit
+){
+
+    const per =
+        content * volume;
+
+
+    const total =
+        per * tests;
+
+
+    const withWaste =
+        total * (1 + waste);
+
+
+
+    document.getElementById(
+        prefix + "Test"
+    ).textContent =
+        fmt(
+            per,
+            unit
+        );
+
+
+    document.getElementById(
+        prefix + "Total"
+    ).textContent =
+        fmt(
+            total,
+            unit
+        );
+
+
+    document.getElementById(
+        prefix + "Waste"
+    ).textContent =
+        fmt(
+            withWaste,
+            unit
+        );
+
+}
+
+
+
+/* RESET */
+
+function resetForm(){
+
+
+    document.getElementById(
+        "tests"
+    ).value = 3;
+
+
+    document.getElementById(
+        "waste"
+    ).value = 10;
+
+
+    document.getElementById(
+        "cement"
+    ).value = 350;
+
+
+    document.getElementById(
+        "water"
+    ).value = 175;
+
+
+    document.getElementById(
+        "fine"
+    ).value = 700;
+
+
+    document.getElementById(
+        "coarse"
+    ).value = 1100;
+
+
+    document.getElementById(
+        "coneTop"
+    ).value = 100;
+
+
+    document.getElementById(
+        "coneBottom"
+    ).value = 200;
+
+
+    document.getElementById(
+        "coneHeight"
+    ).value = 300;
+
+
+    document.getElementById(
+        "results"
+    ).style.display = "none";
+
+}
+
+
+
+/* RUN CALCULATION ON PAGE LOAD */
+
+calculate();
+
+</script>
+
+</body>
+</html>
